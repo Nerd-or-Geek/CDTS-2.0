@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local secrets
+.env
+
+# Local data (do not commit reports)
+backend/data/reports.json
+backend/data/subjects.json
+backend/data/*.lock
+backend/data/*.corrupt
+
+# OS
+.DS_Store
+Thumbs.db

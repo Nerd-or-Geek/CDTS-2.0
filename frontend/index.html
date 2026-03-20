@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reporting System</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Reporting System</h1>
+        <p class="subtitle">Submit a report for review by an administrator.</p>
+      </header>
+
+      <section class="notice">
+        <strong>Important:</strong>
+        <ul>
+          <li>Only submit truthful, good-faith reports.</li>
+          <li>Don’t include highly sensitive personal information (addresses, phone numbers, ID numbers, etc.).</li>
+          <li>If this is an emergency, contact local authorities.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>New report</h2>
+
+        <form id="reportForm" class="form">
+          <label>
+            Person / subject
+            <select id="subjectSelect" name="subject_id" required>
+              <option value="" selected disabled>Loading…</option>
+            </select>
+            <span class="hint">The list is managed by an administrator.</span>
+          </label>
+
+          <label>
+            Category
+            <select name="category">
+              <option value="other" selected>Other</option>
+              <option value="safety">Safety</option>
+              <option value="harassment">Harassment</option>
+              <option value="policy">Policy</option>
+            </select>
+          </label>
+
+          <div class="row">
+            <label>
+              Incident date (optional)
+              <input type="date" name="incident_date" />
+            </label>
+
+            <label>
+              Location (optional)
+              <input name="location" maxlength="200" placeholder="e.g., Building A" />
+            </label>
+          </div>
+
+          <label>
+            Description
+            <textarea name="description" required minlength="10" maxlength="4000" placeholder="What happened? Include only relevant details."></textarea>
+          </label>
+
+          <label>
+            Evidence link (optional)
+            <input name="evidence_url" maxlength="500" placeholder="https://…" />
+          </label>
+
+          <label>
+            Your contact (optional)
+            <input name="reporter_contact" maxlength="200" placeholder="email or other contact (optional)" />
+          </label>
+
+          <button type="submit" class="btn">Submit report</button>
+
+          <p id="result" class="result" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Check report status</h2>
+        <div class="row">
+          <label>
+            Report reference ID
+            <input id="statusId" placeholder="Paste your reference ID" />
+          </label>
+          <button id="checkStatus" class="btn" type="button">Check</button>
+        </div>
+        <p id="statusResult" class="result" aria-live="polite"></p>
+      </section>
+
+      <footer class="footer">
+        <a href="/admin.html">Admin</a>
+      </footer>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

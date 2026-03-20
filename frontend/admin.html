@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reporting System — Admin</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Admin</h1>
+        <p class="subtitle">Manage people list and reports (token required).</p>
+      </header>
+
+      <section class="card">
+        <h2>Access</h2>
+        <div class="row">
+          <label>
+            Admin token
+            <input id="adminToken" type="password" placeholder="Set ADMIN_TOKEN in .env" />
+          </label>
+          <button id="loadReports" class="btn" type="button">Load reports</button>
+        </div>
+        <p id="adminResult" class="result" aria-live="polite"></p>
+      </section>
+
+      <section class="card">
+        <h2>People list</h2>
+
+        <form id="addSubjectForm" class="form">
+          <div class="row">
+            <label>
+              Display name
+              <input name="display_name" required minlength="2" maxlength="120" placeholder="e.g., employee-123" />
+            </label>
+
+            <label>
+              Code (optional)
+              <input name="code" maxlength="50" placeholder="e.g., HR-001" />
+            </label>
+          </div>
+
+          <div class="row">
+            <button class="btn" type="submit">Add person</button>
+            <button id="loadSubjects" class="btn" type="button">Refresh list</button>
+          </div>
+
+          <p id="subjectsResult" class="result" aria-live="polite"></p>
+        </form>
+
+        <div id="subjects" class="subjects"></div>
+      </section>
+
+      <section class="card">
+        <h2>Reports</h2>
+
+        <div class="row">
+          <label>
+            Search
+            <input id="reportQuery" placeholder="Search by id, subject, or text" />
+          </label>
+
+          <label>
+            Status
+            <select id="reportStatus">
+              <option value="" selected>All</option>
+              <option value="new">new</option>
+              <option value="in_progress">in progress</option>
+              <option value="resolved">resolved</option>
+              <option value="rejected">rejected</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            Person / subject
+            <select id="reportSubject">
+              <option value="" selected>All</option>
+            </select>
+          </label>
+
+          <button id="exportCsv" class="btn" type="button">Export CSV</button>
+        </div>
+
+        <div id="reports" class="reports"></div>
+      </section>
+
+      <footer class="footer">
+        <a href="/">Back</a>
+      </footer>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
